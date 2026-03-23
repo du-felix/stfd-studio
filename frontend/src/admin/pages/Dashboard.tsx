@@ -26,7 +26,8 @@ export default function Dashboard() {
     { icon: Users, label: 'Team members', value: 2, href: '/admin/team', color: '#C8903A' },
   ];
 
-  const newSubs = (submissions as { status: string }[]).filter(s => s.status === 'new');
+  type Submission = { id: number; name: string; company: string; package: string; created_at: string; status: string };
+  const newSubs = (submissions as unknown as Submission[]).filter(s => s.status === 'new');
 
   return (
     <AdminLayout>
@@ -62,7 +63,7 @@ export default function Dashboard() {
                 View all <ArrowRight size={12} />
               </Link>
             </div>
-            {(newSubs as { id: number; name: string; company: string; package: string; created_at: string }[]).slice(0, 5).map((s) => (
+            {newSubs.slice(0, 5).map((s) => (
               <div key={s.id} className="flex items-center justify-between px-6 py-4 border-b border-border last:border-0">
                 <div>
                   <p className="font-sans text-sm font-medium">{s.name}</p>
