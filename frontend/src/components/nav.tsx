@@ -37,7 +37,7 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <Button asChild variant="outline" size="sm" className="rounded-none">
+          <Button asChild size="sm" className="rounded-none bg-brand text-brand-foreground hover:bg-brand/90 border-0">
             <Link to="/inquire">Start a project</Link>
           </Button>
         </nav>
@@ -67,7 +67,7 @@ export function Nav() {
               </Link>
             ))}
             <div className="pt-2">
-              <Button asChild variant="outline" size="sm" className="rounded-none w-full">
+              <Button asChild size="sm" className="rounded-none w-full bg-brand text-brand-foreground hover:bg-brand/90 border-0">
                 <Link to="/inquire" onClick={() => setMobileOpen(false)}>
                   Start a project
                 </Link>

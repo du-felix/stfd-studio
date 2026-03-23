@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>stfd studio — Brand Guidelines</title>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAFAF8;
+    --fg: #111111;
+    --muted: #737373;
+    --border: #E5E5E0;
+    --card: #FFFFFF;
+    --secondary: #F4F4F0;
+    --accent: #EBEBEB;
+    --white: #FFFFFF;
+    --brand: #C8FF00;
+    --brand-fg: #111111;
+  }
+
+  html { background: var(--bg); color: var(--fg); }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); width: 1440px; }
+
+  /* ── LAYOUT ── */
+  .page { width: 1440px; }
+
+  .section { padding: 80px 120px; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 48px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    padding: 120px;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--fg);
+    color: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .cover-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cover-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+  .cover-studio {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+  }
+  .cover-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.15em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+  .logo-card {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .logo-card.dark { background: var(--fg); }
+  .logo-card.warm { background: var(--secondary); }
+
+  .logo-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .logo-wordmark-lg {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--fg);
+  }
+  .logo-wordmark-lg.light { color: var(--white); }
+  .logo-wordmark-lg.muted { color: var(--muted); }
+  .logo-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .logo-sub.light { color: rgba(255,255,255,0.4); }
+  .logo-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .logo-caption.light { color: rgba(255,255,255,0.4); }
+
+  /* ── COLORS ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+  }
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+  }
+  .swatch-block {
+    height: 160px;
+    border: 1px solid var(--border);
+  }
+  .swatch-info {
+    padding: 16px 0 0 0;
+  }
+  .swatch-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fg);
+    margin-bottom: 4px;
+  }
+  .swatch-hex {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .swatch-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .type-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 120px;
+    align-items: baseline;
+    gap: 40px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:first-child { border-top: 1px solid var(--border); }
+  .type-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+  .type-meta strong {
+    display: block;
+    font-weight: 500;
+    color: var(--fg);
+    margin-bottom: 2px;
+  }
+  .type-size {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-align: right;
+  }
+
+  .t-display { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; letter-spacing: -0.02em; line-height: 1; color: var(--fg); }
+  .t-h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; letter-spacing: -0.01em; line-height: 1.1; color: var(--fg); }
+  .t-h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); }
+  .t-h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; line-height: 1.2; color: var(--fg); }
+  .t-body-lg { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.7; color: var(--fg); }
+  .t-body { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.7; color: var(--fg); }
+  .t-small { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; line-height: 1.6; color: var(--muted); }
+  .t-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── FONT SPECIMEN ── */
+  .specimen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .specimen-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 48px;
+  }
+  .specimen-card.dark { background: var(--fg); }
+  .specimen-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .specimen-name.light { color: rgba(255,255,255,0.4); }
+  .specimen-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .specimen-big.light { color: var(--white); }
+  .specimen-alphabet {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2;
+    color: var(--fg);
+    letter-spacing: 0.05em;
+    margin-top: 24px;
+  }
+  .specimen-alphabet.light { color: rgba(255,255,255,0.7); }
+  .specimen-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.7);
+    margin-top: 24px;
+  }
+
+  /* ── SPACING ── */
+  .spacing-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+  }
+  .spacing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .spacing-block {
+    background: var(--fg);
+    width: 4px;
+  }
+  .spacing-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .spacing-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
+  /* ── COMPONENTS ── */
+  .components-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .comp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 48px;
+  }
+  .comp-card.dark { background: var(--fg); }
+  .comp-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .comp-title.light { color: rgba(255,255,255,0.4); }
+  .comp-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--fg);
+    color: var(--white);
+    border: 1px solid var(--fg);
+    padding: 10px 24px;
+    border-radius: 0;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 10px 24px;
+    border-radius: 0;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid transparent;
+    padding: 10px 24px;
+    border-radius: 0;
+  }
+  .btn-pill {
+    background: var(--fg);
+    color: var(--white);
+    border: 1px solid var(--fg);
+    padding: 10px 24px;
+    border-radius: 9999px;
+  }
+  .btn-pill-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 10px 24px;
+    border-radius: 9999px;
+  }
+  .btn-sm {
+    font-size: 11px;
+    padding: 6px 16px;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+  .badge-default { background: var(--fg); color: var(--white); }
+  .badge-outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+  .badge-muted { background: var(--secondary); color: var(--muted); }
+  .badge-dot::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #22c55e;
+  }
+
+  /* Cards */
+  .sample-card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 28px;
+    max-width: 280px;
+  }
+  .card-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .card-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .card-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  /* Input */
+  .input-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 320px;
+  }
+  .input-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fg);
+  }
+  .input-field {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 9px 14px;
+    outline: none;
+    border-radius: 0;
+    width: 100%;
+  }
+  .input-hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ── VOICE & TONE ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .voice-col-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .voice-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .voice-example {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .voice-example.wrong { color: var(--muted); text-decoration: line-through; text-decoration-color: #ef4444; }
+  .voice-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── USAGE RULES ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .rule-card {
+    padding: 40px 48px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .rule-card.dont { background: #fef2f2; }
+  .rule-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .rule-tag.do { color: #16a34a; }
+  .rule-tag.dont-tag { color: #dc2626; }
+  .rule-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .rule-list li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--fg);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .rule-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* ── MOTION ── */
+  .motion-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .motion-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+  .motion-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .motion-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fg);
+    margin-bottom: 4px;
+  }
+  .motion-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── GRID LINES ── */
+  .grid-demo {
+    position: relative;
+    height: 200px;
+    background:
+      linear-gradient(to right, #e5e5e0 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e5e0 1px, transparent 1px);
+    background-size: 64px 64px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo">
+      <div class="cover-wordmark">stfd.</div>
+      <div class="cover-studio">Studio</div>
+    </div>
+    <div class="cover-footer">
+      <div class="cover-tagline">Brand Guidelines</div>
+      <div class="cover-meta">
+        Version 1.0<br>
+        March 2025<br>
+        Confidential
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <div class="section">
+    <div class="section-label">01 — Logo</div>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-display">
+          <div class="logo-wordmark-lg">stfd.</div>
+          <div class="logo-sub">Studio</div>
+        </div>
+        <div class="logo-caption">Primary — Light background</div>
+      </div>
+      <div class="logo-card dark">
+        <div class="logo-display">
+          <div class="logo-wordmark-lg light">stfd.</div>
+          <div class="logo-sub light">Studio</div>
+        </div>
+        <div class="logo-caption light">Reversed — Dark background</div>
+      </div>
+      <div class="logo-card warm">
+        <div class="logo-display">
+          <div class="logo-wordmark-lg muted">stfd.</div>
+          <div class="logo-sub">Studio</div>
+        </div>
+        <div class="logo-caption">Reduced — Subtle contexts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section">
+    <div class="section-label">02 — Color</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#111111;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Foreground</div>
+          <div class="swatch-hex">#111111</div>
+          <div class="swatch-role">Primary text, buttons</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#FAFAF8; border:1px solid #E5E5E0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#FAFAF8</div>
+          <div class="swatch-role">Page background</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#FFFFFF; border:1px solid #E5E5E0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-role">Cards, surfaces</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F4F4F0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Secondary</div>
+          <div class="swatch-hex">#F4F4F0</div>
+          <div class="swatch-role">Muted surfaces</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#EBEBEB;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Accent</div>
+          <div class="swatch-hex">#EBEBEB</div>
+          <div class="swatch-role">Hover states</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#E5E5E0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#E5E5E0</div>
+          <div class="swatch-role">Dividers, outlines</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#737373;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted</div>
+          <div class="swatch-hex">#737373</div>
+          <div class="swatch-role">Secondary text</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#C8FF00;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Accent</div>
+          <div class="swatch-hex">#C8FF00</div>
+          <div class="swatch-role">CTAs · highlights · marcant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY SCALE -->
+  <div class="section">
+    <div class="section-label">03 — Typography</div>
+    <div class="type-section">
+      <div class="type-row">
+        <div class="type-meta"><strong>Display</strong>Cormorant Garamond<br>300 Light</div>
+        <div class="t-display">The studio.</div>
+        <div class="type-size">72px / –0.02em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Heading 1</strong>Cormorant Garamond<br>300 Light</div>
+        <div class="t-h1">Web identity, transformed.</div>
+        <div class="type-size">48px / –0.01em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Heading 2</strong>Cormorant Garamond<br>300 Light</div>
+        <div class="t-h2">From idea to launch in 7 days.</div>
+        <div class="type-size">36px / –0.01em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Heading 3</strong>Cormorant Garamond<br>400 Regular</div>
+        <div class="t-h3">Brand-first design system</div>
+        <div class="type-size">24px / 0em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Body Large</strong>DM Sans<br>400 Regular</div>
+        <div class="t-body-lg">We design and build complete web identities for ambitious businesses — faster than anyone else.</div>
+        <div class="type-size">18px / 1.7</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Body</strong>DM Sans<br>400 Regular</div>
+        <div class="t-body">Every pixel reflects your brand. We don't use templates. We build custom design systems tailored to your identity and goals.</div>
+        <div class="type-size">15px / 1.7</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Small</strong>DM Sans<br>400 Regular</div>
+        <div class="t-small">Pricing starts from €1,997 for a single landing page delivered in 5 days.</div>
+        <div class="type-size">12px / 1.6</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Label</strong>DM Sans<br>500 Medium</div>
+        <div class="t-label">Why stfd studio</div>
+        <div class="type-size">10px / +0.3em</div>
+      </div>
+    </div>
+
+    <!-- Font Specimens -->
+    <div class="specimen-grid">
+      <div class="specimen-card">
+        <div class="specimen-name">Cormorant Garamond — Display Serif</div>
+        <div class="specimen-big">Aa</div>
+        <div style="margin-top:24px; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:300; color:#737373; line-height:1.8; letter-spacing:0.05em;">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+          abcdefghijklmnopqrstuvwxyz<br>
+          0123456789 !@#$%&amp;
+        </div>
+        <div style="margin-top:20px; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; font-style:italic; color:#737373; line-height:1.5;">
+          "Design is intelligence made visible."
+        </div>
+      </div>
+      <div class="specimen-card dark">
+        <div class="specimen-name light">DM Sans — Body &amp; UI</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:80px; font-weight:300; line-height:0.95; letter-spacing:-0.02em; color:#FFFFFF;">Aa</div>
+        <div class="specimen-alphabet light">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+          abcdefghijklmnopqrstuvwxyz<br>
+          0123456789 !@#$%&amp;
+        </div>
+        <div class="specimen-quote">
+          "Your web identity. Transformed in a week."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPACING -->
+  <div class="section">
+    <div class="section-label">04 — Spacing &amp; Grid</div>
+    <div class="spacing-grid">
+      <div class="spacing-item">
+        <div class="spacing-value">4px</div>
+        <div class="spacing-block" style="height:4px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">xs — 0.25rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">8px</div>
+        <div class="spacing-block" style="height:4px; width:8px; display:none;"></div>
+        <div class="spacing-block" style="height:8px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">sm — 0.5rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">16px</div>
+        <div class="spacing-block" style="height:16px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">md — 1rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">24px</div>
+        <div class="spacing-block" style="height:24px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">lg — 1.5rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">32px</div>
+        <div class="spacing-block" style="height:32px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">xl — 2rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">48px</div>
+        <div class="spacing-block" style="height:48px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">2xl — 3rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">64px</div>
+        <div class="spacing-block" style="height:64px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">3xl — 4rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">96px</div>
+        <div class="spacing-block" style="height:96px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">4xl — 6rem</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-value">120px</div>
+        <div class="spacing-block" style="height:120px; width:64px; background:var(--fg);"></div>
+        <div class="spacing-label">section — 7.5rem</div>
+      </div>
+    </div>
+    <div style="margin-top:48px;">
+      <div style="font-family:'DM Sans',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:20px;">Background Grid</div>
+      <div class="grid-demo">
+        <div class="grid-label">64px × 64px grid — #E5E5E0</div>
+      </div>
+    </div>
+    <div style="margin-top:32px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-bottom:6px;">Border Radius</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--fg);">4px — Sharp</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;">0.25rem minimal aesthetic</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-bottom:6px;">Max Container</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--fg);">1200px</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;">max-w-6xl centered</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-bottom:6px;">Page Gutter</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--fg);">24–120px</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;">mobile / desktop</div>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-bottom:6px;">Section Padding</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--fg);">80–120px</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:4px;">vertical rhythm</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div class="section">
+    <div class="section-label">05 — Components</div>
+    <div class="components-grid">
+      <!-- Buttons -->
+      <div class="comp-card">
+        <div class="comp-title">Buttons</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="comp-row">
+            <button class="btn" style="background:#C8FF00;color:#111111;border:none;padding:10px 24px;border-radius:9999px;">Start your project</button>
+            <button class="btn btn-primary">Book a call</button>
+            <button class="btn btn-outline">View our work</button>
+            <button class="btn btn-ghost">Learn more →</button>
+          </div>
+          <div class="comp-row">
+            <button class="btn btn-pill">Book a call</button>
+            <button class="btn btn-pill-outline">View pricing</button>
+          </div>
+          <div class="comp-row">
+            <button class="btn btn-primary btn-sm">Small primary</button>
+            <button class="btn btn-outline btn-sm">Small outline</button>
+          </div>
+        </div>
+      </div>
+      <!-- Badges & Status -->
+      <div class="comp-card">
+        <div class="comp-title">Badges &amp; Status</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="comp-row">
+            <span class="badge badge-default">Studio</span>
+            <span class="badge badge-outline">Pricing</span>
+            <span class="badge badge-muted">Brand+</span>
+          </div>
+          <div class="comp-row">
+            <span class="badge badge-outline badge-dot">Taking new projects</span>
+          </div>
+          <div class="comp-row">
+            <span class="badge badge-outline" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:4px 14px;">AI-powered · 1-week delivery</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card -->
+      <div class="comp-card">
+        <div class="comp-title">Card</div>
+        <div class="sample-card">
+          <div class="card-eyebrow">Case Study · 2025</div>
+          <div class="card-title">Meridian Co.</div>
+          <div class="card-body">Brand identity and full website delivered in 6 days. 3× increase in inbound leads within 30 days of launch.</div>
+          <div class="card-divider"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="badge badge-muted">Brand + Website</span>
+            <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);">View case →</span>
+          </div>
+        </div>
+      </div>
+      <!-- Form Elements -->
+      <div class="comp-card">
+        <div class="comp-title">Form Elements</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="input-demo">
+            <label class="input-label">Company name</label>
+            <input class="input-field" type="text" placeholder="Meridian Co." readonly />
+          </div>
+          <div class="input-demo">
+            <label class="input-label">Package</label>
+            <select class="input-field">
+              <option>Studio — €3,997</option>
+            </select>
+          </div>
+          <div class="input-demo">
+            <label class="input-label">Project brief</label>
+            <div class="input-field" style="height:80px;padding-top:9px;color:var(--muted);">Tell us about your project...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOICE & TONE -->
+  <div class="section">
+    <div class="section-label">06 — Voice &amp; Tone</div>
+    <div class="voice-grid">
+      <div>
+        <div class="voice-col-title">✓ Write like this</div>
+        <div class="voice-item">
+          <div class="voice-example">"Your web identity. Transformed in a week."</div>
+          <div class="voice-note">Direct, confident, specific benefit upfront.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example">"We take on 4 projects per month. Yours could be next."</div>
+          <div class="voice-note">Creates scarcity without being pushy.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example">"No back-and-forth. No delays. Just a site that works."</div>
+          <div class="voice-note">Addresses pain points directly.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example">"€3,997. 7 days. Yours."</div>
+          <div class="voice-note">Punchy, minimal, declarative.</div>
+        </div>
+      </div>
+      <div>
+        <div class="voice-col-title">✕ Avoid this</div>
+        <div class="voice-item">
+          <div class="voice-example wrong">"We are a leading digital transformation agency leveraging synergistic solutions..."</div>
+          <div class="voice-note">Jargon-heavy, vague, no real meaning.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example wrong">"We'd love to help you on your journey to success!"</div>
+          <div class="voice-note">Overly enthusiastic, empty language.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example wrong">"Our team of passionate creatives delivers world-class experiences..."</div>
+          <div class="voice-note">Clichéd agency speak.</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-example wrong">"Please don't hesitate to reach out to us at your convenience."</div>
+          <div class="voice-note">Weak, passive, wastes the reader's time.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE RULES -->
+  <div class="section">
+    <div class="section-label">07 — Usage Rules</div>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-tag do">✓ Do</div>
+        <ul class="rule-list">
+          <li>Always write the brand name as "stfd studio" — all lowercase</li>
+          <li>Use Cormorant Garamond exclusively for all headings and display text</li>
+          <li>Maintain generous white space — let content breathe</li>
+          <li>Use hairline borders (1px, #E5E5E0) as the primary separator</li>
+          <li>Keep copy short and declarative — one idea per sentence</li>
+          <li>Use the green dot (#22C55E) only for status/availability indicators</li>
+          <li>Maintain the 4px border radius across all UI elements</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-tag dont-tag">✕ Don't</div>
+        <ul class="rule-list">
+          <li>Never write "STFD", "Stfd", or "Stfd Studio" — always lowercase</li>
+          <li>Never use rounded corners larger than 9999px (pill) or 4px (sharp)</li>
+          <li>Never use colors outside the defined palette for decorative elements</li>
+          <li>Never use font weights above 600 for body text</li>
+          <li>Never add drop shadows to UI components — use borders instead</li>
+          <li>Never place text on low-contrast backgrounds without sufficient opacity</li>
+          <li>Never use more than 2 font families on any single page</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOTION -->
+  <div class="section" style="border-bottom:none;">
+    <div class="section-label">08 — Motion &amp; Interaction</div>
+    <div class="motion-row">
+      <div class="motion-card">
+        <div class="motion-value">150ms</div>
+        <div class="motion-name">Micro</div>
+        <div class="motion-desc">Hover states, focus rings, button presses. ease-out.</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-value">250ms</div>
+        <div class="motion-name">Standard</div>
+        <div class="motion-desc">Menu opens, tooltips, dropdowns. ease-in-out.</div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-value">400ms</div>
+        <div class="motion-name">Page</div>
+        <div class="motion-desc">Page transitions, modal overlays. ease-in-out.</div>
+      </div>
+      <div class="motion-card" style="background:var(--fg);">
+        <div class="motion-value" style="color:var(--white);">Subtle</div>
+        <div class="motion-name" style="color:rgba(255,255,255,0.7);">Principle</div>
+        <div class="motion-desc" style="color:rgba(255,255,255,0.4);">Motion should never distract. Fade and translate only. No bouncing or elastic easing.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

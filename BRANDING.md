@@ -94,11 +94,26 @@
 ### Dark Mode Palette
 Inverted: dark background (#111111) with light foreground (#FAFAF8). Maintains the same minimal character — no neon, no gradient accents.
 
+### Accent Color
+
+| Token | Hex | HSL | Usage |
+|---|---|---|---|
+| `--brand` | `#C8FF00` | `73 100% 50%` | Primary CTAs, "Most Popular" badge, key highlights |
+| `--brand-foreground` | `#111111` | `0 0% 7%` | Text on acid lime backgrounds |
+
+**Acid Lime `#C8FF00`** is the single marcant accent. It is the only non-neutral color used intentionally in the UI. Rules:
+- Use exclusively on primary action buttons and highest-priority highlights
+- Always pair with `#111111` text (never white — insufficient contrast)
+- Never use as a background for large text blocks or full sections
+- Never use more than once per viewport — scarcity is what makes it striking
+- On dark backgrounds (#111111), it reads as electric and energetic
+- On light backgrounds (#FAFAF8), it reads as bold and confident
+
 ### Color Principles
-- Monochromatic by default — no color accents in the base palette
+- Monochromatic base — the accent is the only hue in the palette
 - Warmth comes from the warm white background (#FAFAF8), not from tinted colors
 - Contrast is high — foreground to background meets WCAG AA minimum
-- Color is used for emphasis through value (light/dark), not hue
+- Color is used for emphasis through value (light/dark) and a single accent hue
 
 ---
 

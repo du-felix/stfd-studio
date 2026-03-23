@@ -26,39 +26,44 @@ function ValueProp() {
   const values = [
     {
       number: "01",
-      title: "Speed without compromise",
+      title: "Speed without\ncompromise.",
       description: "We deliver polished, production-ready websites in 7 days flat. No shortcuts — just a process refined for speed.",
     },
     {
       number: "02",
-      title: "Brand-first design",
-      description: "Every pixel reflects your brand. We don't use templates. We build custom design systems tailored to your identity.",
+      title: "Brand-first\ndesign.",
+      description: "Every pixel reflects your brand. No templates. We build custom design systems tailored to your identity.",
     },
     {
       number: "03",
-      title: "AI-accelerated craft",
+      title: "AI-accelerated\ncraft.",
       description: "We leverage AI to move faster, so you get agency-quality work at a fraction of the time and cost.",
     },
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-background">
+    <section className="bg-background">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-16">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">Why stfd</p>
-          <h2 className="font-serif text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl max-w-2xl">
-            The studio that moves at startup speed.
-          </h2>
+        <div className="flex items-center justify-between py-8 border-b border-border">
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground/60">Why stfd</p>
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted-foreground/60">Studio</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {values.map((v) => (
-            <div key={v.number} className="flex flex-col gap-4">
-              <span className="font-sans text-xs text-muted-foreground/50 tracking-widest">{v.number}</span>
-              <h3 className="font-serif text-xl font-medium tracking-tight text-foreground">{v.title}</h3>
-              <p className="font-sans text-sm text-muted-foreground leading-relaxed">{v.description}</p>
-            </div>
-          ))}
-        </div>
+        {values.map((v) => (
+          <div
+            key={v.number}
+            className="grid grid-cols-[2rem_1fr] md:grid-cols-[2rem_1fr_20rem] items-start gap-x-8 gap-y-4 py-12 border-b border-border"
+          >
+            <span className="font-sans text-[10px] tracking-widest text-muted-foreground/40 pt-2">
+              {v.number}
+            </span>
+            <h3 className="font-serif text-4xl font-light leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl whitespace-pre-line">
+              {v.title}
+            </h3>
+            <p className="font-sans text-sm text-muted-foreground leading-relaxed col-start-2 md:col-start-3 md:pt-2">
+              {v.description}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

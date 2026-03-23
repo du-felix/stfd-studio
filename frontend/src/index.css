@@ -26,6 +26,8 @@
     --input: 40 12% 89%;
     --ring: 0 0% 7%;
     --radius: 0.25rem;
+    --brand: 73 100% 50%;
+    --brand-foreground: 0 0% 7%;
   }
   .dark {
     --background: 0 0% 7%;
