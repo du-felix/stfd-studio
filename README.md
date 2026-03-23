@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# stfd studio
 
-## Getting Started
+Website for stfd studio — a React + Vite frontend, Django + DRF backend, and PostgreSQL database.
 
-First, run the development server:
+---
+
+## Prerequisites
+
+- Node 18+
+- Python 3.12+
+- Docker (for the containerized quick start)
+
+---
+
+## Quick Start with Docker
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This starts PostgreSQL, runs Django migrations, seeds case data, and serves the backend at `http://localhost:8000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start the frontend separately (Docker does not serve the frontend):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Learn More
+Frontend runs at `http://localhost:5173`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Manual Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend
 
-## Deploy on Vercel
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env            # fill in values
+python manage.py migrate
+python manage.py seed_cases
+python manage.py runserver
+```
+
+---
+
+## Environment Variables
+
+### Frontend (`frontend/.env`)
+
+| Variable       | Description          | Default                      |
+| -------------- | -------------------- | ---------------------------- |
+| `VITE_API_URL` | Backend API base URL | `http://localhost:8000/api`  |
+
+### Backend (`backend/.env`)
+
+| Variable               | Description                        | Default                                              |
+| ---------------------- | ---------------------------------- | ---------------------------------------------------- |
+| `SECRET_KEY`           | Django secret key                  | —                                                    |
+| `DEBUG`                | Enable debug mode                  | `True`                                               |
+| `ALLOWED_HOSTS`        | Comma-separated allowed hosts      | `localhost,127.0.0.1`                                |
+| `DB_NAME`              | PostgreSQL database name           | `stfd_db`                                            |
+| `DB_USER`              | PostgreSQL user                    | `stfd_user`                                          |
+| `DB_PASSWORD`          | PostgreSQL password                | `stfd_pass`                                          |
+| `DB_HOST`              | PostgreSQL host                    | `localhost`                                          |
+| `DB_PORT`              | PostgreSQL port                    | `5432`                                               |
+| `CORS_ALLOWED_ORIGINS` | Comma-separated CORS origins       | `http://localhost:5173,http://127.0.0.1:5173`        |
+
+---
+
+## API Endpoints
+
+| Method | Endpoint          | Description                    |
+| ------ | ----------------- | ------------------------------ |
+| `POST` | `/api/inquiries/` | Submit a new studio inquiry    |
+| `GET`  | `/api/cases/`     | List all published case studies |
+
+---
+
+## Project Structure
+
+```
+stfd/website/
+├── docker-compose.yml
+├── .gitignore
+├── README.md
+├── frontend/                  # React + Vite
+│   ├── src/
+│   ├── public/
+│   ├── .env
+│   ├── .env.example
+│   ├── package.json
+│   └── vite.config.ts
+└── backend/                   # Django + DRF
+    ├── cases/                 # Case studies app
+    ├── inquiries/             # Inquiries app
+    ├── config/                # Django settings & URL config
+    ├── manage.py
+    ├── requirements.txt
+    ├── Dockerfile
+    └── .env.example
+```
+
+---
+
+## Tech Stack
+
+- **Frontend:** React, Vite, TypeScript, Tailwind CSS
+- **Backend:** Django, Django REST Framework
+- **Database:** PostgreSQL 16
+- **Containerization:** Docker, Docker Compose
