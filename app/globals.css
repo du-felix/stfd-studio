@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,7 +11,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-heading: var(--font-serif);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,73 +51,140 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* stfd studio — light mode */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Background: #FAFAF8 warm white */
+  --background: oklch(0.984 0.002 90);
+  /* Foreground: #111111 near black */
+  --foreground: oklch(0.141 0 0);
+
+  /* Card: #FFFFFF */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.141 0 0);
+
+  /* Popover */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --popover-foreground: oklch(0.141 0 0);
+
+  /* Primary: #111111 */
+  --primary: oklch(0.141 0 0);
+  /* Primary Foreground: #FAFAF8 */
+  --primary-foreground: oklch(0.984 0.002 90);
+
+  /* Secondary: #F4F4F0 light cream */
+  --secondary: oklch(0.962 0.002 90);
+  --secondary-foreground: oklch(0.141 0 0);
+
+  /* Muted: #F4F4F0 */
+  --muted: oklch(0.962 0.002 90);
+  /* Muted Foreground: #737373 */
+  --muted-foreground: oklch(0.521 0 0);
+
+  /* Accent: #EBEBEB */
+  --accent: oklch(0.932 0 0);
+  --accent-foreground: oklch(0.141 0 0);
+
+  /* Destructive: #EF4444 */
+  --destructive: oklch(0.628 0.258 26.833);
+
+  /* Border: #E5E5E0 */
+  --border: oklch(0.913 0.003 90);
+  /* Input: #E5E5E0 */
+  --input: oklch(0.913 0.003 90);
+  /* Ring: #111111 */
+  --ring: oklch(0.141 0 0);
+
+  /* Charts — monochromatic scale */
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Radius — sharp minimal: 4px */
+  --radius: 0.25rem;
+
+  /* Sidebar */
+  --sidebar: oklch(0.984 0.002 90);
+  --sidebar-foreground: oklch(0.141 0 0);
+  --sidebar-primary: oklch(0.141 0 0);
+  --sidebar-primary-foreground: oklch(0.984 0.002 90);
+  --sidebar-accent: oklch(0.962 0.002 90);
+  --sidebar-accent-foreground: oklch(0.141 0 0);
+  --sidebar-border: oklch(0.913 0.003 90);
+  --sidebar-ring: oklch(0.141 0 0);
 }
 
+/* stfd studio — dark mode (inverted) */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  /* Background: #111111 */
+  --background: oklch(0.141 0 0);
+  /* Foreground: #FAFAF8 */
+  --foreground: oklch(0.984 0.002 90);
+
+  /* Card: slightly lighter than bg */
+  --card: oklch(0.181 0 0);
+  --card-foreground: oklch(0.984 0.002 90);
+
+  /* Popover */
+  --popover: oklch(0.181 0 0);
+  --popover-foreground: oklch(0.984 0.002 90);
+
+  /* Primary: #FAFAF8 (inverted) */
+  --primary: oklch(0.984 0.002 90);
+  /* Primary Foreground: #111111 */
+  --primary-foreground: oklch(0.141 0 0);
+
+  /* Secondary: dark surface */
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.984 0.002 90);
+
+  /* Muted: dark surface */
+  --muted: oklch(0.22 0 0);
+  /* Muted Foreground: medium gray */
+  --muted-foreground: oklch(0.62 0 0);
+
+  /* Accent: slightly lighter dark surface */
+  --accent: oklch(0.26 0 0);
+  --accent-foreground: oklch(0.984 0.002 90);
+
+  /* Destructive */
   --destructive: oklch(0.704 0.191 22.216);
+
+  /* Border / Input */
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  /* Ring */
+  --ring: oklch(0.984 0.002 90);
+
+  /* Charts */
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+
+  /* Sidebar */
+  --sidebar: oklch(0.181 0 0);
+  --sidebar-foreground: oklch(0.984 0.002 90);
+  --sidebar-primary: oklch(0.984 0.002 90);
+  --sidebar-primary-foreground: oklch(0.141 0 0);
+  --sidebar-accent: oklch(0.22 0 0);
+  --sidebar-accent-foreground: oklch(0.984 0.002 90);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: oklch(0.984 0.002 90);
+}
+
+@keyframes shine-pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
 }
 
 @layer base {
@@ -125,6 +195,14 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    font-family: 'DM Sans', var(--font-sans), sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cormorant Garamond', var(--font-serif), serif;
   }
 }
