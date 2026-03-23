@@ -17,17 +17,18 @@ export function Nav() {
     <header className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex flex-col leading-none group">
+        <Link to="/" className="flex items-center gap-2.5 leading-none group">
           <span className="font-serif text-xl font-semibold tracking-tight">
             stfd.
           </span>
-          <span className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground">
+          <span className="w-px h-[14px] bg-foreground/20 self-center" />
+          <span className="text-[9px] tracking-[0.35em] uppercase text-muted-foreground self-center pb-px">
             Studio
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.href}

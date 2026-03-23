@@ -10,10 +10,10 @@ export default function About() {
       <Nav />
       <main className="pt-14">
         {/* Hero */}
-        <section className="py-24 lg:py-32 bg-background border-b border-border">
+        <section className="py-16 md:py-24 lg:py-32 bg-background border-b border-border">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">About</p>
-            <h1 className="font-serif text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl max-w-3xl mb-8">
+            <h1 className="font-serif text-4xl sm:text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl max-w-3xl mb-8">
               We build web identities that mean something.
             </h1>
             <p className="font-sans text-base text-muted-foreground leading-relaxed max-w-xl">
@@ -23,9 +23,9 @@ export default function About() {
         </section>
 
         {/* Mission */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
               <div>
                 <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Our mission</p>
                 <h2 className="font-serif text-3xl font-light tracking-tight text-foreground md:text-4xl mb-6">
@@ -59,26 +59,69 @@ export default function About() {
         </section>
 
         {/* Team */}
-        <section className="py-24 bg-[#F5F4F0] border-y border-border">
+        <section className="py-16 md:py-24 bg-background border-y border-border">
           <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-12">The team</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl">
-              <div className="flex flex-col gap-3">
-                <div className="w-16 h-16 rounded-full bg-muted" />
-                <div>
-                  <p className="font-serif text-xl font-medium tracking-tight">Felix</p>
-                  <p className="font-sans text-sm text-muted-foreground">Design & Strategy</p>
-                </div>
-                <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-                  Designer and founder. Obsessed with the space between brand and product.
-                </p>
-              </div>
+
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-10 border-b border-border mb-0">
+              <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">The team</p>
+              <p className="font-serif text-lg font-light italic text-muted-foreground">
+                Two people. One obsession with craft.
+              </p>
             </div>
+
+            {/* Members */}
+            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+              {[
+                {
+                  name: "Felix Du",
+                  role: "Design & Strategy",
+                  bio: "Designer and founder. Obsessed with the space between brand and product. Before stfd, Felix led design at early-stage startups and worked with founders across Europe and the US.",
+                  image: null as string | null,
+                },
+                {
+                  name: "Name",
+                  role: "Engineering & Development",
+                  bio: "Developer and co-founder. Brings engineering rigour to every project — fast, performant, production-ready code that matches the design pixel-for-pixel.",
+                  image: null as string | null,
+                },
+              ].map((person, i) => (
+                <div key={person.name} className={`flex flex-col ${i === 0 ? "md:pr-12" : "md:pl-12"} pt-10`}>
+                  {/* Portrait */}
+                  <div className="w-full aspect-[4/5] bg-secondary overflow-hidden relative mb-8">
+                    {person.image ? (
+                      <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-end p-6">
+                        <span
+                          className="font-serif font-light leading-none select-none text-foreground/[0.06]"
+                          style={{ fontSize: "clamp(6rem, 20vw, 14rem)" }}
+                        >
+                          {person.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Info */}
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-serif text-2xl font-light tracking-tight">{person.name}</h3>
+                      <span className="font-sans text-[9px] tracking-[0.25em] uppercase text-muted-foreground/60 shrink-0">
+                        {person.role}
+                      </span>
+                    </div>
+                    <p className="font-sans text-sm text-muted-foreground leading-relaxed">{person.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="font-serif text-3xl font-light tracking-tight text-foreground md:text-4xl mb-8 max-w-xl">
               Ready to transform your web identity?

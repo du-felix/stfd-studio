@@ -18,14 +18,15 @@ export function Footer() {
   return (
     <footer className="bg-background border-t border-border">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
-            <Link to="/" className="flex flex-col leading-none w-fit">
+            <Link to="/" className="flex items-center gap-2.5 leading-none w-fit">
               <span className="font-serif text-xl font-semibold tracking-tight">
                 stfd.
               </span>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-muted-foreground">
+              <span className="w-px h-[14px] bg-foreground/20 self-center" />
+              <span className="text-[9px] tracking-[0.35em] uppercase text-muted-foreground self-center pb-px">
                 Studio
               </span>
             </Link>

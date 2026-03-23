@@ -69,19 +69,19 @@ export default function Inquire() {
       <Nav />
       <main className="pt-14">
         {/* Header */}
-        <section className="py-24 lg:py-32 bg-background border-b border-border">
+        <section className="py-16 md:py-24 lg:py-32 bg-background border-b border-border">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Start a project</p>
-            <h1 className="font-serif text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl max-w-2xl">
+            <h1 className="font-serif text-4xl sm:text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl max-w-2xl">
               Let's build something great.
             </h1>
           </div>
         </section>
 
         {/* Form */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
               {/* Left: info */}
               <div className="flex flex-col gap-8">
                 <div>

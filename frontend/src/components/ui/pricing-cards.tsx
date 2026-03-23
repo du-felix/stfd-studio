@@ -64,7 +64,7 @@ export function Pricing() {
         <Card className="rounded-none ring-1 ring-foreground shadow-2xl flex flex-col">
           <CardHeader className="pb-4">
             <div className="mb-2">
-              <Badge className="rounded-none text-xs tracking-wide bg-brand text-brand-foreground border-0">
+              <Badge className="rounded-none text-xs tracking-wide bg-foreground text-background border-0">
                 Most Popular
               </Badge>
             </div>

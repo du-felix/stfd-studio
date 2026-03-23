@@ -4,13 +4,14 @@ import { Footer } from "@/components/footer";
 import Hero from "@/components/hero";
 import { Button } from "@/components/ui/button";
 import { MoveRight, ArrowRight } from "lucide-react";
+import { cases as allCases } from "@/data/cases";
 
 // Logo Marquee section
 function LogoMarquee() {
   const logos = ["Notion", "Linear", "Vercel", "Stripe", "Figma", "Loom", "Arc", "Raycast"];
   return (
     <section className="border-y border-border bg-background py-10 overflow-hidden">
-      <div className="flex gap-12 animate-marquee whitespace-nowrap">
+      <div className="flex gap-6 sm:gap-12 animate-marquee whitespace-nowrap">
         {[...logos, ...logos].map((logo, i) => (
           <span key={i} className="font-serif text-xl text-muted-foreground/40 tracking-tight shrink-0">
             {logo}
@@ -79,7 +80,7 @@ function Process() {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-[#F5F4F0] border-y border-border">
+    <section className="py-16 md:py-24 lg:py-32 bg-secondary border-y border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">The process</p>
@@ -103,14 +104,10 @@ function Process() {
 
 // Cases Teaser section
 function CasesTeaser() {
-  const cases = [
-    { title: "Meridian Capital", category: "Finance · Landing Page", year: "2026" },
-    { title: "Bloom Studio", category: "Creative Agency · Full Site", year: "2026" },
-    { title: "Arkade", category: "SaaS · Marketing Site", year: "2025" },
-  ];
+  const featured = allCases.slice(0, 3);
 
   return (
-    <section className="py-24 lg:py-32 bg-background">
+    <section className="py-16 md:py-24 lg:py-32 bg-background">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-end justify-between mb-16">
           <div>
@@ -126,8 +123,12 @@ function CasesTeaser() {
           </Button>
         </div>
         <div className="flex flex-col divide-y divide-border">
-          {cases.map((c, i) => (
-            <div key={i} className="flex items-center justify-between py-6 group cursor-pointer">
+          {featured.map((c) => (
+            <Link
+              key={c.id}
+              to={`/cases/${c.slug}`}
+              className="flex items-center justify-between gap-x-4 gap-y-1 flex-wrap py-6 group"
+            >
               <div className="flex flex-col gap-1">
                 <span className="font-serif text-2xl font-light tracking-tight text-foreground group-hover:text-muted-foreground transition-colors">
                   {c.title}
@@ -138,7 +139,7 @@ function CasesTeaser() {
                 <span className="font-sans text-xs text-muted-foreground/50">{c.year}</span>
                 <ArrowRight size={16} className="text-muted-foreground/30 group-hover:text-foreground group-hover:translate-x-1 transition-all" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="mt-8 md:hidden">
@@ -163,9 +164,9 @@ function Stats() {
   ];
 
   return (
-    <section className="py-16 border-y border-border bg-[#111111]">
+    <section className="py-16 border-y border-border bg-foreground">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-2">
               <span className="font-serif text-4xl font-light text-white md:text-5xl">{s.value}</span>
@@ -181,7 +182,7 @@ function Stats() {
 // CTA section
 function CTA() {
   return (
-    <section className="py-24 lg:py-32 bg-background">
+    <section className="py-16 md:py-24 lg:py-32 bg-background">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">Ready to start?</p>
         <h2 className="font-serif text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl max-w-2xl mx-auto mb-8">
@@ -191,7 +192,7 @@ function CTA() {
           We take on a limited number of projects each month. Book your spot now.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild className="h-11 rounded-none px-8 font-sans text-sm gap-2">
+          <Button asChild className="h-11 rounded-none px-8 font-sans text-sm gap-2 bg-brand text-brand-foreground hover:bg-brand/90">
             <Link to="/inquire">
               Start your project <MoveRight size={14} />
             </Link>
