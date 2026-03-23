@@ -100,7 +100,7 @@ function MemberCard({ member, saving, saved, onUpdate, onSave, onPhotoUpload }: 
             onClick={() => fileRef.current?.click()}
           >
             {member.photo_url ? (
-              <img src={`http://localhost:8000${member.photo_url}`} alt={member.name} className="w-full h-full object-cover" />
+              <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}${member.photo_url}`} alt={member.name} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="font-serif text-3xl font-light text-foreground/20">{member.name.charAt(0)}</span>
