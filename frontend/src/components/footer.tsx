@@ -68,9 +68,6 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
-            <p className="text-xs text-muted-foreground mt-auto pt-4">
-              Made with AI ✦
-            </p>
           </div>
         </div>
       </div>
