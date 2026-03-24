@@ -1,10 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from .models import TeamMember
 from .serializers import TeamMemberSerializer
+
+
+class PublicTeamListView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        members = TeamMember.objects.all().order_by('order')
+        return Response(TeamMemberSerializer(members, many=True).data)
 
 
 class AdminTeamListView(APIView):

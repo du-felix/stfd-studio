@@ -20,9 +20,7 @@ export default function About() {
   const [members, setMembers] = useState<Member[]>([]);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/admin/team/`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
-    })
+    fetch(`${API_BASE}/api/team/`)
       .then(r => r.ok ? r.json() : [])
       .then(data => setMembers(Array.isArray(data) ? data.sort((a: Member, b: Member) => a.order - b.order) : []))
       .catch(() => {});
