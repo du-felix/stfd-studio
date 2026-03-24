@@ -5,8 +5,6 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-
 interface Member {
   id: number;
   name: string;
@@ -98,7 +96,7 @@ export default function About() {
                   {/* Portrait */}
                   <div className="w-full aspect-[4/5] bg-secondary overflow-hidden relative mb-8">
                     {person.photo_url ? (
-                      <img src={`${API_BASE}${person.photo_url}`} alt={person.name} className="w-full h-full object-cover" />
+                      <img src={person.photo_url} alt={person.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-end p-6">
                         <span

@@ -2,7 +2,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from .models import TeamMember
 from .serializers import TeamMemberSerializer
 
@@ -17,7 +16,6 @@ class PublicTeamListView(APIView):
 
 class AdminTeamListView(APIView):
     permission_classes = [IsAuthenticated]
-    parser_classes = [MultiPartParser, FormParser, JSONParser]
 
     def get(self, request):
         members = TeamMember.objects.all()
@@ -33,7 +31,6 @@ class AdminTeamListView(APIView):
 
 class AdminTeamDetailView(APIView):
     permission_classes = [IsAuthenticated]
-    parser_classes = [MultiPartParser, FormParser, JSONParser]
 
     def put(self, request, pk):
         try:

@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import AdminLayout from '../AdminLayout';
-import { apiGet, apiUpload } from '../api';
+import { apiGet, apiPut } from '../api';
+import { uploadTeamPhoto } from '@/lib/supabase';
 import { Upload, Save, Plus, Trash2, X } from 'lucide-react';
 
 interface Member {
   id: number; name: string; role: string; bio: string;
-  photo_url: string | null; order: number;
+  photo_url: string; order: number;
 }
 
 const inputCls = "w-full border border-border bg-white font-sans text-sm px-3 py-2 outline-none focus:border-foreground/40 transition-colors";
@@ -31,24 +32,30 @@ export default function Team() {
 
   async function save(member: Member) {
     setSaving(member.id);
-    const fd = new FormData();
-    fd.append('name', member.name);
-    fd.append('role', member.role);
-    fd.append('bio', member.bio);
-    await apiUpload(`/admin/team/${member.id}/`, fd);
+    await apiPut(`/admin/team/${member.id}/`, {
+      name: member.name,
+      role: member.role,
+      bio: member.bio,
+      photo_url: member.photo_url,
+      order: member.order,
+    });
     setSaving(null);
     setSaved(member.id);
     setTimeout(() => setSaved(null), 2000);
   }
 
-  async function uploadPhoto(member: Member, file: File) {
-    const fd = new FormData();
-    fd.append('name', member.name);
-    fd.append('role', member.role);
-    fd.append('bio', member.bio);
-    fd.append('photo', file);
-    const updated = await apiUpload(`/admin/team/${member.id}/`, fd);
-    setMembers(prev => prev.map(m => m.id === member.id ? { ...m, photo_url: updated.photo_url } : m));
+  async function handlePhotoUpload(member: Member, file: File) {
+    setSaving(member.id);
+    try {
+      const url = await uploadTeamPhoto(file);
+      const updated = { ...member, photo_url: url };
+      setMembers(prev => prev.map(m => m.id === member.id ? updated : m));
+      await apiPut(`/admin/team/${member.id}/`, { photo_url: url });
+      setSaved(member.id);
+      setTimeout(() => setSaved(null), 2000);
+    } finally {
+      setSaving(null);
+    }
   }
 
   async function deleteMember(id: number) {
@@ -86,10 +93,7 @@ export default function Team() {
         {members.length === 0 && !showAdd && (
           <div className="bg-white border border-border p-8 text-center">
             <p className="font-sans text-sm text-muted-foreground mb-3">No team members yet.</p>
-            <button
-              onClick={() => setShowAdd(true)}
-              className="font-sans text-sm text-foreground underline"
-            >
+            <button onClick={() => setShowAdd(true)} className="font-sans text-sm text-foreground underline">
               Add the first one
             </button>
           </div>
@@ -107,7 +111,7 @@ export default function Team() {
             saved={saved === member.id}
             onUpdate={(field, val) => update(member.id, field, val)}
             onSave={() => save(member)}
-            onPhotoUpload={(file) => uploadPhoto(member, file)}
+            onPhotoUpload={(file) => handlePhotoUpload(member, file)}
             onDelete={() => deleteMember(member.id)}
           />
         ))}
@@ -123,14 +127,14 @@ function AddMemberForm({ onCreated, onCancel }: {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const [bio, setBio] = useState('');
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
 
   function pickPhoto(file: File) {
-    setPhoto(file);
+    setPhotoFile(file);
     setPreview(URL.createObjectURL(file));
   }
 
@@ -138,17 +142,18 @@ function AddMemberForm({ onCreated, onCancel }: {
     if (!name.trim() || !role.trim()) { setError('Name and role are required.'); return; }
     setSaving(true);
     setError('');
-    const fd = new FormData();
-    fd.append('name', name.trim());
-    fd.append('role', role.trim());
-    fd.append('bio', bio.trim());
-    fd.append('order', '0');
-    if (photo) fd.append('photo', photo);
     try {
+      let photo_url = '';
+      if (photoFile) {
+        photo_url = await uploadTeamPhoto(photoFile);
+      }
       const res = await fetch(`${API_BASE}/api/admin/team/`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
-        body: fd,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('admin_token')}`,
+        },
+        body: JSON.stringify({ name: name.trim(), role: role.trim(), bio: bio.trim(), photo_url, order: 0 }),
       });
       if (!res.ok) throw new Error('Failed');
       const created = await res.json();
@@ -169,7 +174,6 @@ function AddMemberForm({ onCreated, onCancel }: {
       </div>
 
       <div className="flex gap-6">
-        {/* Photo picker */}
         <div className="shrink-0">
           <div
             className="w-24 h-24 bg-secondary border border-border overflow-hidden relative cursor-pointer group"
@@ -191,7 +195,6 @@ function AddMemberForm({ onCreated, onCancel }: {
           <p className="font-sans text-[9px] text-muted-foreground/50 text-center mt-1.5 tracking-[0.15em] uppercase">Photo</p>
         </div>
 
-        {/* Fields */}
         <div className="flex-1 flex flex-col gap-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -242,14 +245,13 @@ function MemberCard({ member, saving, saved, onUpdate, onSave, onPhotoUpload, on
   return (
     <div className="bg-white border border-border p-6">
       <div className="flex gap-6">
-        {/* Photo */}
         <div className="shrink-0">
           <div
             className="w-24 h-24 bg-secondary border border-border overflow-hidden relative cursor-pointer group"
             onClick={() => fileRef.current?.click()}
           >
             {member.photo_url ? (
-              <img src={`${API_BASE}${member.photo_url}`} alt={member.name} className="w-full h-full object-cover" />
+              <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="font-serif text-3xl font-light text-foreground/20">{member.name.charAt(0)}</span>
@@ -264,7 +266,6 @@ function MemberCard({ member, saving, saved, onUpdate, onSave, onPhotoUpload, on
           <p className="font-sans text-[9px] text-muted-foreground/50 text-center mt-1.5 tracking-[0.15em] uppercase">Click to upload</p>
         </div>
 
-        {/* Fields */}
         <div className="flex-1 flex flex-col gap-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
