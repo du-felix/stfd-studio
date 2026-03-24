@@ -1,10 +1,33 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+interface Member {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  photo_url: string | null;
+  order: number;
+}
+
 export default function About() {
+  const [members, setMembers] = useState<Member[]>([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/admin/team/`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('admin_token')}` },
+    })
+      .then(r => r.ok ? r.json() : [])
+      .then(data => setMembers(Array.isArray(data) ? data.sort((a: Member, b: Member) => a.order - b.order) : []))
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <Nav />
@@ -72,25 +95,12 @@ export default function About() {
 
             {/* Members */}
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-              {[
-                {
-                  name: "Felix Du",
-                  role: "Design & Strategy",
-                  bio: "Designer and founder. Obsessed with the space between brand and product. Before stfd, Felix led design at early-stage startups and worked with founders across Europe and the US.",
-                  image: null as string | null,
-                },
-                {
-                  name: "Name",
-                  role: "Engineering & Development",
-                  bio: "Developer and co-founder. Brings engineering rigour to every project — fast, performant, production-ready code that matches the design pixel-for-pixel.",
-                  image: null as string | null,
-                },
-              ].map((person, i) => (
-                <div key={person.name} className={`flex flex-col ${i === 0 ? "md:pr-12" : "md:pl-12"} pt-10`}>
+              {members.map((person, i) => (
+                <div key={person.id} className={`flex flex-col ${i === 0 ? "md:pr-12" : "md:pl-12"} pt-10`}>
                   {/* Portrait */}
                   <div className="w-full aspect-[4/5] bg-secondary overflow-hidden relative mb-8">
-                    {person.image ? (
-                      <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+                    {person.photo_url ? (
+                      <img src={`${API_BASE}${person.photo_url}`} alt={person.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-end p-6">
                         <span
