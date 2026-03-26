@@ -105,7 +105,7 @@ export default function About() {
                         src={person.photo_url || STATIC_PHOTOS[i]}
                         alt={person.name}
                         className="w-full h-full object-cover object-top"
-                        style={{ filter: 'grayscale(30%) contrast(1.08) brightness(0.95)' }}
+                        style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.92)' }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-end p-6">
