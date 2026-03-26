@@ -17,6 +17,7 @@ export default function Team() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<number | null>(null);
   const [saved, setSaved] = useState<number | null>(null);
+  const [uploadError, setUploadError] = useState('');
   const [showAdd, setShowAdd] = useState(false);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function Team() {
 
   async function handlePhotoUpload(member: Member, file: File) {
     setSaving(member.id);
+    setUploadError('');
     try {
       const url = await uploadTeamPhoto(file);
       const updated = { ...member, photo_url: url };
@@ -53,6 +55,8 @@ export default function Team() {
       await apiPut(`/admin/team/${member.id}/`, { photo_url: url });
       setSaved(member.id);
       setTimeout(() => setSaved(null), 2000);
+    } catch (e) {
+      setUploadError(e instanceof Error ? e.message : 'Upload failed');
     } finally {
       setSaving(null);
     }
@@ -90,6 +94,11 @@ export default function Team() {
       </div>
 
       <div className="px-8 py-8 flex flex-col gap-6 max-w-3xl">
+        {uploadError && (
+          <div className="bg-red-50 border border-red-200 px-4 py-3 font-sans text-sm text-red-600">
+            {uploadError}
+          </div>
+        )}
         {members.length === 0 && !showAdd && (
           <div className="bg-white border border-border p-8 text-center">
             <p className="font-sans text-sm text-muted-foreground mb-3">No team members yet.</p>
