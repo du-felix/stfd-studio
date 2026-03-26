@@ -13,46 +13,40 @@ export function Pricing() {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
-        {/* Essential */}
+        {/* Launch */}
         <Card className="rounded-none ring-1 ring-border flex flex-col">
           <CardHeader className="pb-4">
             <CardTitle className="font-serif text-2xl font-medium tracking-tight">
-              Essential
+              Launch
             </CardTitle>
             <div className="pt-2">
               <span className="font-serif text-4xl font-light tracking-tight">
-                €1,997
+                CHF 1,490
               </span>
             </div>
             <CardDescription className="text-sm text-muted-foreground leading-relaxed pt-1">
-              Perfect for startups and solopreneurs who need a high-converting
-              landing page, fast.
+              For startups that need a sharp landing page live before the next meeting.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 gap-6">
             <ul className="flex flex-col gap-3">
               {[
-                "Single landing page (up to 6 sections)",
-                "Custom design — no templates",
-                "Mobile-optimized & SEO ready",
-                "5-day delivery",
+                "Single landing page, up to 5 sections",
+                "No templates — built from scratch",
+                "Mobile optimised + SEO ready",
+                "Copy guidelines & suggestions included",
                 "1 round of revisions",
-                "Next.js or Webflow delivery",
+                "30 days of free changes after launch",
+                "5-day delivery",
               ].map((feature) => (
                 <li key={feature} className="flex items-start gap-2.5 text-sm">
-                  <Check
-                    size={15}
-                    className="mt-0.5 shrink-0 text-foreground"
-                  />
+                  <Check size={15} className="mt-0.5 shrink-0 text-foreground" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-auto pt-2">
-              <Button
-                variant="outline"
-                className="w-full rounded-none gap-2 h-9"
-              >
+              <Button variant="outline" className="w-full rounded-none gap-2 h-9">
                 Start today
                 <MoveRight size={15} />
               </Button>
@@ -73,30 +67,27 @@ export function Pricing() {
             </CardTitle>
             <div className="pt-2">
               <span className="font-serif text-4xl font-light tracking-tight">
-                €3,997
+                CHF 3,500
               </span>
             </div>
             <CardDescription className="text-sm text-muted-foreground leading-relaxed pt-1">
-              For growing businesses ready for a complete web presence that
-              reflects their brand.
+              For funded startups that need a complete web presence that matches their ambition.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 gap-6">
             <ul className="flex flex-col gap-3">
               {[
                 "Up to 8 pages",
-                "Full brand alignment & custom UI system",
-                "Copywriting guidance included",
-                "CMS integration (Sanity or Notion)",
-                "7-day delivery",
+                "No templates — built from scratch",
+                "Custom design system & brand alignment",
+                "Mobile optimised + SEO ready",
+                "Copy guidelines & suggestions included",
                 "2 rounds of revisions",
-                "Dedicated Slack channel",
+                "30 days of free changes after launch",
+                "7-day delivery",
               ].map((feature) => (
                 <li key={feature} className="flex items-start gap-2.5 text-sm">
-                  <Check
-                    size={15}
-                    className="mt-0.5 shrink-0 text-foreground"
-                  />
+                  <Check size={15} className="mt-0.5 shrink-0 text-foreground" />
                   <span>{feature}</span>
                 </li>
               ))}
@@ -110,47 +101,42 @@ export function Pricing() {
           </CardContent>
         </Card>
 
-        {/* Brand+ */}
+        {/* Scale */}
         <Card className="rounded-none ring-1 ring-border flex flex-col">
           <CardHeader className="pb-4">
             <CardTitle className="font-serif text-2xl font-medium tracking-tight">
-              Brand+
+              Scale
             </CardTitle>
             <div className="pt-2">
               <span className="font-serif text-4xl font-light tracking-tight">
-                Custom
+                From CHF 6,000
               </span>
             </div>
             <CardDescription className="text-sm text-muted-foreground leading-relaxed pt-1">
-              Full brand identity plus website. The complete transformation
-              package.
+              For companies that need a full site with advanced interactions and CMS.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 gap-6">
             <ul className="flex flex-col gap-3">
               {[
-                "Full brand identity system (logo, colors, typography)",
                 "Up to 12 pages",
+                "No templates — built from scratch",
                 "Custom animations & interactions",
-                "Priority support & handoff",
+                "Custom design system & brand alignment",
+                "CMS integration",
+                "Copy guidelines & suggestions included",
+                "2 rounds of revisions",
+                "30 days of free changes after launch",
                 "7-day delivery",
-                "Unlimited revisions for 30 days",
-                "Quarterly strategy call",
               ].map((feature) => (
                 <li key={feature} className="flex items-start gap-2.5 text-sm">
-                  <Check
-                    size={15}
-                    className="mt-0.5 shrink-0 text-foreground"
-                  />
+                  <Check size={15} className="mt-0.5 shrink-0 text-foreground" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-auto pt-2">
-              <Button
-                variant="outline"
-                className="w-full rounded-none gap-2 h-9"
-              >
+              <Button variant="outline" className="w-full rounded-none gap-2 h-9">
                 Book a call
                 <PhoneCall size={15} />
               </Button>
