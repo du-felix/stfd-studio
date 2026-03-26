@@ -5,6 +5,11 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+// Static fallback photos in order (index matches member sort order)
+const STATIC_PHOTOS = ['/team/felix.jpg', '/team/member2.jpg'];
+
 interface Member {
   id: number;
   name: string;
@@ -95,8 +100,13 @@ export default function About() {
                 <div key={person.id} className={`flex flex-col ${i === 0 ? "md:pr-12" : "md:pl-12"} pt-10`}>
                   {/* Portrait */}
                   <div className="w-full aspect-[4/5] bg-secondary overflow-hidden relative mb-8">
-                    {person.photo_url ? (
-                      <img src={person.photo_url} alt={person.name} className="w-full h-full object-cover" />
+                    {(person.photo_url || STATIC_PHOTOS[i]) ? (
+                      <img
+                        src={person.photo_url || STATIC_PHOTOS[i]}
+                        alt={person.name}
+                        className="w-full h-full object-cover object-top"
+                        style={{ filter: 'grayscale(30%) contrast(1.08) brightness(0.95)' }}
+                      />
                     ) : (
                       <div className="w-full h-full flex items-end p-6">
                         <span
